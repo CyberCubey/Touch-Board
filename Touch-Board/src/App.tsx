@@ -1,11 +1,10 @@
-import { useState } from 'react'
+import ContentfulEntries from './components/ContentfulEntries'
 
 function App() {
-
   return (
-    <>
-      
-    </>
+    <div>
+      <ContentfulEntries />
+    </div>
   )
 }
 

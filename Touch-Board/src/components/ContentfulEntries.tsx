@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import ContentfulCard from './ContentfulCard'
 
 const SPACE_ID = 'fgprzh3vayg6'

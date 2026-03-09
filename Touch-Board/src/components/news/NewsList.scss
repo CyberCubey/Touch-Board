@@ -2,6 +2,7 @@
   padding: 1.5rem 1rem;
   height: 100%;
   overflow-y: auto;
+  --news-thumb-height: 120px;
 }
 
 .news-title {
@@ -18,6 +19,10 @@
   border-radius: 8px;
   margin-bottom: 1.2rem;
   padding: 1rem;
+  position: relative;
+  overflow: visible;
+  /* reserve space for the absolutely positioned thumbnail */
+  padding-top: calc(var(--news-thumb-height) + 28px);
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   transition: transform 0.12s ease;
 
@@ -28,10 +33,14 @@
 }
 
 .news-thumbnail-placeholder {
-  height: 140px;
+  /* Position placeholder in the same absolute area as real thumbnails */
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: calc(100% - 24px);
+  height: var(--news-thumb-height);
   background: #e5e7eb;
   border-radius: 6px;
-  margin-bottom: 0.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,3 +77,38 @@
 .news-error {
   color: #dc2626;
 }
+
+.news-thumbnail {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: calc(100% - 24px);
+  height: var(--news-thumb-height);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.news-thumbnail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+
+@media (min-width: 640px) {
+  .news-container {
+    --news-thumb-height: 140px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .news-container {
+    --news-thumb-height: 180px;
+  }
+}
+

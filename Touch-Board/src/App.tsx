@@ -1,13 +1,7 @@
-import type { ReactElement } from "react";
-
-import MapComponent from "./components/map/Map";
-
-export default function App(): ReactElement {
-  return <MapComponent />;
-}
 import { useState } from 'react';
 import { useContentful } from './hooks/useContentfulData';
 import NewsList from './components/news/NewsList';
+import MapComponent from './components/map/Map';
 import './App.scss';
 
 export default function App() {
@@ -29,10 +23,7 @@ export default function App() {
         <div className="map">
           {loading && <p>Henter data...</p>}
           {error && <p>Fejl: {error}</p>}
-          <div className="map-placeholder">
-            Verdenskort med aktiviteter<br />
-            (kommer snart fra din makker)
-          </div>
+          <MapComponent />
         </div>
 
         {/* Højre side – kun nyheder (uden "Lavet af..." her) */}

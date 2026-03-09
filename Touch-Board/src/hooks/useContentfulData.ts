@@ -1,19 +1,21 @@
 // src/hooks/useContentful.ts
 import { useState, useEffect } from 'react';
-import { getNyheder, getAktiviteter } from '../services/contentful';
+import { getNyheder, getAktiviteter, getInformation } from '../services/contentful';
 
 export function useContentful() {
   const [nyheder, setNyheder] = useState<any[]>([]);
   const [aktiviteter, setAktiviteter] = useState<any[]>([]);
+  const [information, setInformation] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function loadData() {
       try {
-        const [newsData, actData] = await Promise.all([
+        const [newsData, actData, infoData] = await Promise.all([
           getNyheder(),
-          getAktiviteter()
+          getAktiviteter(),
+          getInformation(),
         ]);
 
         function resolveItems(data: any) {
@@ -34,6 +36,7 @@ export function useContentful() {
 
         setNyheder(resolveItems(newsData));
         setAktiviteter(resolveItems(actData));
+        setInformation(resolveItems(infoData));
       } catch (err: any) {
         setError(err.message);
       } finally {
@@ -44,5 +47,5 @@ export function useContentful() {
     loadData();
   }, []);
 
-  return { nyheder, aktiviteter, loading, error };
+  return { nyheder, aktiviteter, information, loading, error };
 }

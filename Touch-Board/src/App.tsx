@@ -3,9 +3,10 @@ import { useContentful } from './hooks/useContentfulData';
 import NewsList from './components/news/NewsList';
 import MapComponent from './components/map/Map';
 import './App.scss';
+import InformationModal from './components/info/InformationModal';
 
 export default function App() {
-  const { nyheder, loading, error } = useContentful();
+  const { nyheder, loading, error, information } = useContentful();
   const [showInfo, setShowInfo] = useState(false);
 
   return (
@@ -14,6 +15,7 @@ export default function App() {
       <button
         className="info-button"
         onTouchStart={() => setShowInfo(true)}
+        onClick={() => setShowInfo(true)}
       >
         Info
       </button>
@@ -39,21 +41,7 @@ export default function App() {
 
       {/* Simpel info-modal */}
       {showInfo && (
-        <div className="modal" onTouchStart={() => setShowInfo(false)}>
-          <div className="modal-box" onTouchStart={e => e.stopPropagation()}>
-            <button
-              className="close-button"
-              onTouchStart={() => setShowInfo(false)}
-            >
-              Luk
-            </button>
-
-            <h2>Globaliseringskontoret</h2>
-            <p>Vi hjælper med Erasmus+ og udveksling.</p>
-            <p>Erasmus+ er et EU-program for studerende.</p>
-            <p>Kontakt: global@skolen.dk</p>
-          </div>
-        </div>
+        <InformationModal items={information} onClose={() => setShowInfo(false)} />
       )}
     </div>
   );

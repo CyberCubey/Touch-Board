@@ -1,0 +1,51 @@
+.information-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.information-modal {
+  background: #fff;
+  border-radius: 8px;
+  width: min(900px, 96%);
+  max-height: 80vh;
+  overflow: auto;
+  padding: 16px;
+  position: relative;
+}
+
+.information-close {
+  position: absolute;
+  right: 10px;
+  top: 6px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.information-list {
+  display: grid;
+  gap: 12px;
+}
+
+.information-item-title {
+  margin: 0 0 6px 0;
+}
+
+.information-item-body {
+  color: #374151;
+}
+
+.information-item-footer {
+  margin-top: 10px;
+}
+
+.information-item-footer a {
+  color: #1f72d1;
+  text-decoration: underline;
+}

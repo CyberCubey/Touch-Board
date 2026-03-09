@@ -24,6 +24,10 @@ export async function getAktiviteter() {
   return fetchContentful('aktiviteter');
 }
 
+export async function getInformation() {
+  return fetchContentful('information');
+}
+
 // Hjælpefunktion til at få billede-URL
 export function getImageUrl(thumbnail: any) {
   if (!thumbnail?.fields?.file?.url) return null;

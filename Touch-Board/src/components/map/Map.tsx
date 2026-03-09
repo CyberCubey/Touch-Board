@@ -1,12 +1,13 @@
 import type { ReactElement } from "react";
 import "leaflet/dist/leaflet.css";
+import "./map.scss";
 
 import { MapContainer, TileLayer } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
 
-import { createCustomIcon } from "./map/icon";
-import { createClusterCustomIcon } from "./map/clusterIcon";
-import MarkerList from "./map/MarkerList";
+import { createCustomIcon } from "./icon";
+import { createClusterCustomIcon } from "./clusterIcon";
+import MarkerList from "./MarkerList";
 
 export default function MapComponent(): ReactElement {
   const customIcon = createCustomIcon();

@@ -1,12 +1,8 @@
-import { useState } from 'react'
+import type { ReactElement } from "react";
+import "./style.scss";
 
-function App() {
+import MapComponent from "./components/Map";
 
-  return (
-    <>
-      
-    </>
-  )
+export default function App(): ReactElement {
+  return <MapComponent />;
 }
-
-export default App
